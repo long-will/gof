@@ -17,13 +17,20 @@ public class SubscribeDemo {
 
         Observer observer = new Observer();
         observer.setName("aaa");
+        Observer observer1 = new Observer();
+        observer1.setName("bbb");
 
         Observerable observerable = new ObserverAbleImpl();
         observerable.addObserver(observer);
+        observerable.addObserver(observer1);
         /**
          * 服务端执行完了某些方法后
          */
         observerable.notifyObserver();
+        /**
+         * 由失效机制来判定是否去掉观察者
+         */
+        observerable.deleteObserver(observer1);
     }
 
 
